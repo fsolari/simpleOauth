@@ -81,7 +81,7 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 		
 	}
 
-	header('location: /meli/done');
+	header('location: https://simpleoauth.com/meli/done');
 	
 } else {
 
