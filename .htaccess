@@ -1,5 +1,6 @@
 RewriteEngine on
 
 RewriteBase /
-RewriteCond %{HTTP_HOST} !^simpleoauth.com$ [NC]
+RewriteCond %{HTTP_HOST} https://simpleoauth.com$ [NC]
 RewriteRule ^(.*)$ https://simpleoauth.com/$1 [L,R=301]
+
