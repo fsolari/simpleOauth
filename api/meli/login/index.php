@@ -66,17 +66,17 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 	$json					= json_encode($res);
 
 	// Lee si existe el registro
-	$u_id = getFieldValue("SELECT user_id FROM meliexpress.sellers WHERE user_id='$user_id'","user_id");
+	$u_id = getFieldValue("SELECT user_id FROM simpleoauth.users WHERE user_id='$user_id'","user_id");
 
 	if($u_id){ 
 		// Si existe lo actualiza
-		$query = "UPDATE meliexpress.sellers SET user_id='$user_id',nickname='$nickname',email='$email',identification_number='$identification_number',identification_type='$identification_type',user_json='$json', access_token='$access_token', expires_in='$expires_in', refresh_token='$refresh_token',site_id='$site_id',points=$points WHERE user_id=$user_id";
+		$query = "UPDATE simpleoauth.users SET user_id='$user_id',nickname='$nickname',email='$email',identification_number='$identification_number',identification_type='$identification_type',user_json='$json', access_token='$access_token', expires_in='$expires_in', refresh_token='$refresh_token',site_id='$site_id',points=$points WHERE user_id=$user_id";
 		$q = updateQuery($query);
 		
 	}else{
 
 		// Si no existe lo crea
-		$query = "INSERT INTO meliexpress.sellers (user_id,nickname,email,identification_number,identification_type,user_json, access_token, expires_in, refresh_token,site_id,points) VALUES ('$user_id','$nickname','$email','$identification_number','$identification_type','$json','$access_token','$expires_in','$refresh_token','$site_id',$points)";
+		$query = "INSERT INTO simpleoauth.users (user_id,nickname,email,identification_number,identification_type,user_json, access_token, expires_in, refresh_token,site_id,points) VALUES ('$user_id','$nickname','$email','$identification_number','$identification_type','$json','$access_token','$expires_in','$refresh_token','$site_id',$points)";
 		$q = insertQuery($query);
 		
 	}
