@@ -1,0 +1,9 @@
+RewriteEngine on
+
+RewriteBase /
+RewriteCond %{HTTP_HOST} !^simpleoauth.com$ [NC]
+RewriteRule ^(.*)$ https://simpleoauth.com/$1 [L,R=301]
+
+RewriteEngine On 
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://simpleoauth.com/$1 [R,L]
