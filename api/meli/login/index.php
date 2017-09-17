@@ -76,12 +76,15 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 	}else{
 
 		// Si no existe lo crea
-		$query = "INSERT INTO simpleoauth.users (user_id,nickname,email,identification_number,identification_type,user_json, access_token, expires_in, refresh_token,site_id,points) VALUES ('$user_id','$nickname','$email','$identification_number','$identification_type','$json','$access_token','$expires_in','$refresh_token','$site_id',$points)";
+
+		$the_token = "";
+
+		$query = "INSERT INTO simpleoauth.users (the_token,user_id,nickname,email,identification_number,identification_type,user_json, access_token, expires_in, refresh_token,site_id,points) VALUES ('$the_token','$user_id','$nickname','$email','$identification_number','$identification_type','$json','$access_token','$expires_in','$refresh_token','$site_id',$points)";
 		$q = insertQuery($query);
 		
 	}
 
-	header('location: https://simpleoauth.com/meli/done');
+	header('location:https://simpleoauth.com/meli/done/');
 	
 } else {
 
