@@ -1,5 +1,9 @@
 <?php
 session_start('meliexpress');
+if($_SESSION['MELI_the_token']==""){
+  header("location:/")
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +50,9 @@ session_start('meliexpress');
 
 
 </section>
-
+<?php
+$_SESSION['MELI_the_token']="";
+ ?>
 
   <section class="engine"><script src="../../assets/web/assets/jquery/jquery.min.js"></script>
   <script src="../../assets/tether/tether.min.js"></script>
