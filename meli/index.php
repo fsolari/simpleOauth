@@ -39,7 +39,7 @@
                     <p class="mbr-section-lead lead">Autentícate en Mercado Libre, autoriza la aplicación y obtén un <strong>token</strong> único con el que podrás obtener el <strong>access_token</strong> siempre renovado para tu solución de integración con la API de Mercado Libre.</p>
                     <div class="mbr-section-btn"><a class="btn btn-lg btn-danger" href="/api/meli/login/">LOGIN</a> </div>
                     </br>
-                    <p style="color:white;">Guardamos y renovamos tu access_token por ti</p>
+                    <p style="color:white;">Guardamos y renovamos de forma segura tu access_token por ti</p>
                 </div>
             </div>
         </div>
