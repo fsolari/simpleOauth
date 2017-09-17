@@ -36,7 +36,7 @@
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
 
                     <h1 class="mbr-section-title display-1" style="font-size: 4.39rem;">simpleoauth</h1>
-                    <p class="mbr-section-lead lead">Autentícate, autoriza la aplicación y obtén un <strong>token</strong> con el que podrás obtener el <strong>access_token</strong> renovado para tu solución de integración con la API de Mercado Libre.</p>
+                    <p class="mbr-section-lead lead">Autentícate, autoriza la aplicación y obtén un <strong>token</strong> con el que podrás obtener el <strong>access_token</strong> siempre actualizado para tu solución de integración con la API de Mercado Libre.</p>
                     <div class="mbr-section-btn"><a class="btn btn-lg btn-danger" href="/api/meli/login/">LOGIN</a> </div>
                 </div>
             </div>
