@@ -85,7 +85,8 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 		$q = insertQuery($query);
 		
 	}
-	$_SESSION['MELI_the_token'] = $the_token;
+	$_SESSION['MELI_nickname']	= $nickname;
+	$_SESSION['MELI_the_token']	= $the_token;
 
 	header('location:https://simpleoauth.com/meli/done/');
 	
