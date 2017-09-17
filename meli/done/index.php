@@ -39,11 +39,13 @@ if($_SESSION['MELI_the_token']==""){
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
 
                     <h1 class="mbr-section-title display-1">¡LISTO!</h1>
-                    <p class="mbr-section-lead lead">Hola, <?php echo $_SESSION['MELI_nickname'];?>,tu token único es:</p>
+                    <p class="mbr-section-lead lead">Hola, <?php echo $_SESSION['MELI_nickname'];?>, tu token único es:</p>
                     <p class="mbr-section-lead lead"><?php echo $_SESSION['MELI_the_token']; ?></p></br>
                     <p style="color:white">Ahora puedes recuperar tu <strong>access_token</strong> siempre renovado desde:</p>
                     <p><a style="color:white" href="https://simpleoauth.com/api/meli/get_token/?token=<?php echo $_SESSION['MELI_the_token']; ?>">https://simpleoauth.com/api/meli/get_token/?token=<?php echo $_SESSION['MELI_the_token']; ?></a></p>
-                    
+                    <p>Recuerda guardar este token único de forma segura.</p>
+                    <div class="mbr-section-btn"><a class="btn btn-lg btn-danger" href="/api/meli/delete/?token=<?php echo $_SESSION['MELI_the_token']; ?>">ELIMINAR TOKEN</a> </div>
+                    <div class="mbr-section-btn"><a class="btn btn-lg btn-primary" href="/meli/">VOLVER</a> </div>
                     
                 </div>
             </div>
