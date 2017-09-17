@@ -40,7 +40,7 @@ if($_SESSION['MELI_the_token']==""){
 
                     <h1 class="mbr-section-title display-1">¡LISTO!</h1>
                     <p class="mbr-section-lead lead">Hola, <?php echo $_SESSION['MELI_nickname'];?>, tu token único es:</p>
-                    <p class="mbr-section-lead lead" style="border-style:dashed;border-radius: 10px;"><?php echo $_SESSION['MELI_the_token']; ?></p></br>
+                    <p class="mbr-section-lead lead" style="border-style:dashed;border-radius: 10px;padding:10px;"><?php echo $_SESSION['MELI_the_token']; ?></p></br>
                     <p style="color:white">Ahora puedes recuperar tu <strong>access_token</strong> siempre renovado desde:</p>
                     <p><a style="color:white" href="https://simpleoauth.com/api/meli/get_token/?token=<?php echo $_SESSION['MELI_the_token']; ?>">https://simpleoauth.com/api/meli/get_token/?token=<?php echo $_SESSION['MELI_the_token']; ?></a></p>
                     <p style="color:white;">Recuerda guardar este token único de forma segura. Úsalo siempre en ambientes de servidor.</p>
