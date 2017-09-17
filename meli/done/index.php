@@ -1,3 +1,6 @@
+<?php
+session_start('meliexpress');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +35,9 @@
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
 
                     <h1 class="mbr-section-title display-1">¡LISTO!</h1>
-                    <p class="mbr-section-lead lead"></p>
+                    <p class="mbr-section-lead lead">Tu token es:</p>
+                    <p class="mbr-section-lead lead"><?php echo $_SESSION['MELI_the_token']; ?></p></br>
+                    
                     
                 </div>
             </div>

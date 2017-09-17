@@ -10,7 +10,7 @@ require '../../functions.php';
 // echo $_SERVER['SERVER_NAME'];
 // die;
 
-
+$_SESSION['MELI_the_token'] = "";
 
 $meli = new Meli('2220486502877433', 'rG3n3Lk7830EdUfjwoUuUB0wc9Sq4hQR', 
 				$_SESSION['MELI_seller_access_token'], $_SESSION['MELI_seller_refresh_token']);
@@ -72,6 +72,8 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 		// Si existe lo actualiza
 		$query = "UPDATE simpleoauth.users SET user_id='$user_id',nickname='$nickname',email='$email',identification_number='$identification_number',identification_type='$identification_type',user_json='$json', access_token='$access_token', expires_in='$expires_in', refresh_token='$refresh_token',site_id='$site_id',points=$points WHERE user_id=$user_id";
 		$q = updateQuery($query);
+
+		$the_token = getFieldValue("SELECT the_token FROM simpleoauth.users WHERE user_id='$user_id'","the_token");
 		
 	}else{
 
@@ -83,10 +85,13 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 		$q = insertQuery($query);
 		
 	}
+	$_SESSION['MELI_the_token'] = $the_token;
 
 	header('location:https://simpleoauth.com/meli/done/');
 	
 } else {
+
+	$_SESSION['MELI_the_token'] = "";
 
 	header('location:'.$meli->getAuthUrl('https://simpleoauth.com/api/meli/login/', Meli::$AUTH_URL['MLC']));
 }
