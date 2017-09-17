@@ -23,7 +23,7 @@ $access_token = getFieldValue("SELECT access_token FROM simpleoauth.users where 
 
 
 
-echo "{\"access_token\":\"$access_token\"";
+echo "{\"access_token\":\"$access_token\"}";
 
 
 
