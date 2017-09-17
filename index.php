@@ -9,7 +9,7 @@ session_start('meliexpress');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
-  <meta name="description" content="">
+  <meta name="description" content="Un solo token para todas tus llamadas a la API de Mercdo Libre">
   <title>simpleoauth</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
@@ -23,7 +23,7 @@ session_start('meliexpress');
   <meta property="og:description" content="simpleoauth"/>
   <meta property="og:image" content="https://simpleoauth.com/assets/images/mbr-2000x1328.jpg"/>
   <meta property="og:site_name" content="simpleoauth.com" />
-  <meta property="og:title" content="Un token para todas tus llamadas" />
+  <meta property="og:title" content="Un solo token para todas tus llamadas a la API de Mercdo Libre" />
   <meta property="og:url" content="http://simpleoauth.com" />
   
 </head>
