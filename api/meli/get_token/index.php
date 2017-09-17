@@ -14,25 +14,34 @@ $meli = new Meli('2220486502877433', 'rG3n3Lk7830EdUfjwoUuUB0wc9Sq4hQR');
 $access_token = getFieldValue("SELECT access_token FROM simpleoauth.users where the_token='".$token."';","access_token");
 
 
+if($access_token!='0'){
 
- //	$res = $meli->get("/sites/$site_id/search",$params);
+	$expires_in = getFieldValue("SELECT expires_in FROM simpleoauth.users where the_token='".$token."';","expires_in");
 
-//	array_push($all_results, $res['body']->results);
+	if($expires_in < time()) {
 
-	// Ordena los sellers por points
+		$user_id = getFieldValue("SELECT user_id FROM simpleoauth.users where the_token='".$token."';","user_id");
+		$refresh_token = getFieldValue("SELECT refresh_token FROM simpleoauth.users where the_token='".$token."';","refresh_token");
 
+		try {
+			
+			$refresh = $meli->refreshAccessToken();
+
+			$access_token 	= $refresh['body']->access_token;
+			$expires_in 	= time() + $refresh['body']->expires_in;
+			$refresh_token 	= $refresh['body']->refresh_token;
+
+			$query = "UPDATE simpleoauth.users SET access_token='$access_token', expires_in='$expires_in', refresh_token='$refresh_token' WHERE user_id=$user_id";
+			$q = updateQuery($query);
+
+
+		} catch (Exception $e) {
+		  	echo "{\"error\":\"$e->getMessage()\"}";
+		}
+	}
+
+}
 
 
 echo "{\"access_token\":\"$access_token\"}";
-
-
-
-
-// Compara orders con user_id de compradores registrados
-
-// envía notificaciones de las compras
-
-
-
-
 ?>
