@@ -1,7 +1,7 @@
 <?php
 session_start('meliexpress');
 if($_SESSION['MELI_the_token']==""){
-  header("location:/")
+  header("location: /");
 }
 
 ?>
