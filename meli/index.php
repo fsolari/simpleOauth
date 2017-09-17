@@ -16,8 +16,12 @@
   <link rel="stylesheet" href="../assets/animate.css/animate.min.css">
   <link rel="stylesheet" href="../assets/theme/css/style.css">
   <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
+    <meta property="og:description" content="simpleoauth"/>
+  <meta property="og:image" content="https://simpleoauth/assets/images/c4zpv2eweae0lw2-2000x1293.jpg"/>
+  <meta property="og:site_name" content="simpleoauth.com" />
+  <meta property="og:title" content="Un token para todas tus llamadas" />
+  <meta property="og:url" content="http://simpleoauth.com" />
   
-  <meta name="robots" content="noindex">
   
 </head>
 <body>

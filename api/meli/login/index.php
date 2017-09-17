@@ -77,7 +77,7 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 
 		// Si no existe lo crea
 
-		$the_token = "";
+		$the_token = md5(uniqid(rand(), true))."-".md5(uniqid($email, true))."-".md5(uniqid(rand(), true));
 
 		$query = "INSERT INTO simpleoauth.users (the_token,user_id,nickname,email,identification_number,identification_type,user_json, access_token, expires_in, refresh_token,site_id,points) VALUES ('$the_token','$user_id','$nickname','$email','$identification_number','$identification_type','$json','$access_token','$expires_in','$refresh_token','$site_id',$points)";
 		$q = insertQuery($query);
