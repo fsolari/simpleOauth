@@ -21,14 +21,14 @@ session_start('meliexpress');
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
   <meta property="og:description" content="simpleoauth"/>
-  <meta property="og:image" content="https://simpleoauth/assets/images/c4zpv2eweae0lw2-2000x1293.jpg"/>
+  <meta property="og:image" content="https://simpleoauth.com/assets/images/mbr-2000x1328.jpg"/>
   <meta property="og:site_name" content="simpleoauth.com" />
   <meta property="og:title" content="Un token para todas tus llamadas" />
   <meta property="og:url" content="http://simpleoauth.com" />
   
 </head>
 <body>
-<section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-section-with-arrow" id="header1-2" style="background-image: url(assets/images/c4zpv2eweae0lw2-2000x1293.jpg);">
+<section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-section-with-arrow" id="header1-2" style="background-image: url(assets/images/mbr-2000x1328.jpg);">
 
     <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
 
