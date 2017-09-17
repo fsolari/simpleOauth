@@ -45,7 +45,7 @@ if($_SESSION['MELI_the_token']==""){
                     <p><a style="color:white" href="https://simpleoauth.com/api/meli/get_token/?token=<?php echo $_SESSION['MELI_the_token']; ?>">https://simpleoauth.com/api/meli/get_token/?token=<?php echo $_SESSION['MELI_the_token']; ?></a></p>
                     <p style="color:white;">Recuerda guardar este token único de forma segura.</p>
                     <div class="mbr-section-btn"><a class="btn btn-lg btn-danger" href="/api/meli/delete/?token=<?php echo $_SESSION['MELI_the_token']; ?>">ELIMINAR ESTE TOKEN</a> </div>
-                    <div class="mbr-section-btn"><a class="btn btn-lg btn-primary" href="/meli/">VOLVER</a> </div>
+                    <div class="mbr-section-btn"><a class="btn btn-lg btn-primary" href="/">VOLVER</a> </div>
                     
                 </div>
             </div>
