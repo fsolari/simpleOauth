@@ -34,9 +34,11 @@ if($access_token!='0'){
 			$query = "UPDATE simpleoauth.users SET access_token='$access_token', expires_in='$expires_in', refresh_token='$refresh_token' WHERE user_id=$user_id";
 			$q = updateQuery($query);
 
-
+			echo "{\"access_token\":\"$access_token\",\"updated\":true}";
+			die;
 		} catch (Exception $e) {
 		  	echo "{\"error\":\"$e->getMessage()\"}";
+		  	die;
 		}
 	}
 
