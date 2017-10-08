@@ -5,6 +5,7 @@ ini_set('display_errors', 0);
 
 require '../meli.php';
 require '../../functions.php';
+global $app_id,$secret_key;
 
 extract($_GET);
 
@@ -22,17 +23,22 @@ if($access_token!='0'){
 
 		$user_id = getFieldValue("SELECT user_id FROM simpleoauth.users where the_token='".$token."';","user_id");
 		$refresh_token = getFieldValue("SELECT refresh_token FROM simpleoauth.users where the_token='".$token."';","refresh_token");
+		$get_app_id = getFieldValue("SELECT app_id FROM simpleoauth.users where the_token='".$token."';","app_id");
+		$get_secret_key = getFieldValue("SELECT secret_key FROM simpleoauth.users where the_token='".$token."';","secret_key");
+
+		if($get_app_id!=''){$app_id=$get_app_id;};
+		if($get_secret_key!=''){$secret_key=$get_secret_key;};
 
 		try {
 
-			$meli = new Meli('2220486502877433', 'rG3n3Lk7830EdUfjwoUuUB0wc9Sq4hQR',$access_token,$refresh_token);
+			$meli = new Meli($app_id, $secret_key,$access_token,$refresh_token);
 			
 			$refresh 		= 	$meli->refreshAccessToken();
 			$access_token 	= 	$refresh['body']->access_token;
 			$expires_in 	= 	time() + $refresh['body']->expires_in;
 			$refresh_token 	= 	$refresh['body']->refresh_token;
 
-			$query = "UPDATE simpleoauth.users SET access_token='$access_token', expires_in='$expires_in', refresh_token='$refresh_token' WHERE user_id=$user_id";
+			$query = "UPDATE simpleoauth.users SET access_token='$access_token', expires_in='$expires_in', refresh_token='$refresh_token' WHERE user_id='$user_id' AND app_id='$app_id' AND secret_key='$secret_key';";
 			$q = updateQuery($query);
 
 			echo "{\"access_token\":\"$access_token\",\"updated\":true}";

@@ -1,10 +1,11 @@
 <?php
 session_start('meliexpress');
+
 if($_SESSION['MELI_the_token']==""){
   header("location: /meli");
 }
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,8 +40,8 @@ if($_SESSION['MELI_the_token']==""){
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
 
                     <h1 class="mbr-section-title display-1">¡LISTO!</h1>
-                    <p class="mbr-section-lead lead">Hola, <?php echo $_SESSION['MELI_nickname'];?>, tu token único es:</p>
-                    <p class="mbr-section-lead lead" style="border-style:dashed;border-radius: 10px;padding:10px;"><?php echo $_SESSION['MELI_the_token']; ?></p></br>
+                    <p class="mbr-section-lead lead">Hola, <?php echo $_SESSION['MELI_nickname'];?>, tu token único para la aplicación <?php echo $_SESSION['MELI_app_name'] ; ?> es:</p>
+                    <p class="mbr-section-lead lead" style="border-style:dashed;border-radius: 10px;padding:10px;background-color: rgba(255,255,255,0.5);color:black"><?php echo $_SESSION['MELI_the_token']; ?></p></br>
                     <p style="color:white">Ahora puedes recuperar tu <strong>access_token</strong> siempre renovado desde:</p>
                     <p><a style="color:white" target="_blank" href="https://simpleoauth.com/api/meli/get_token/?token=<?php echo $_SESSION['MELI_the_token']; ?>">https://simpleoauth.com/api/meli/get_token/?token=<?php echo $_SESSION['MELI_the_token']; ?></a></p>
                     <p style="color:white;">Recuerda guardar este token único de forma segura. Úsalo siempre en ambientes de servidor.</p>
@@ -57,6 +58,11 @@ if($_SESSION['MELI_the_token']==""){
 <?php
 $_SESSION['MELI_the_token']="";
 $_SESSION['MELI_nickname'] ="";
+$_SESSION['app_id']="";
+$_SESSION['secret_key']="";
+$_SESSION['MELI_seller_access_token']="";
+$_SESSION['MELI_seller_refresh_token']="";
+$_SESSION['MELI_app_name'] = "";
  ?>
 
   <section class="engine"><script src="../../assets/web/assets/jquery/jquery.min.js"></script>

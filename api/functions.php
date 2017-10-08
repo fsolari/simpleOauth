@@ -5,7 +5,7 @@ ini_set('display_errors', 0);
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
 
 include_once 'vars.php';
-global $dbServer, $dbUser, $dbPass, $dbName;
+global $dbServer, $dbUser, $dbPass, $dbName, $app_id, $secret_key;
 
 ////////////////////////////////////////////////////////////////////////////////
 /*

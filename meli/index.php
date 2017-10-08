@@ -34,13 +34,23 @@
         <div class="container">
             <div class="row">
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
-
+                  <form action="/api/meli/submit/" method="post">
                     <h1 class="mbr-section-title display-1" style="font-size: 4.39rem;">simpleoauth</h1>
                     <p class="mbr-section-lead lead">Autentícate en Mercado Libre, autoriza la aplicación y obtén un <strong>token</strong> único con el que podrás obtener el <strong>access_token</strong> siempre renovado para tu solución de integración con la API de Mercado Libre.</p>
-                    <div class="mbr-section-btn"><a class="btn btn-lg btn-danger" href="/api/meli/login/">LOGIN</a> </div>
+                    <div class="mbr-section-btn"><input type="submit" value="LOGIN" class="btn btn-lg btn-danger"> </div>
                     </br>
-                    <p style="color:white;">Guardamos y renovamos de forma segura tu access_token por ti</p>
+                    <a id="show_app" href="javascript:showApp();" style="color:white">¿Quieres usar el app_id y secret_key de tu propia aplicación de Mercado Libre?</a>
+                    <div style="display:none;" id="app_section">
+                    <p style="color:white;">Si ya tienes una aplicación propia de Mercado Libre, pega aquí el app_id y secret_key:</p>
+                    <p style="color:white" id="application_data">
+                      <input type="text" name="app_id" placeholder="Application ID">
+                      <input type="password" name="secret_key" placeholder="Secret Key">
+                    </p>
+                    <p style="color:white">Recuerda que deberás poner "<b>https://simpleoauth.com/api/meli/login/</b>" en redirect URI.<br/>(Para ver y editar tus aplicaciones haz clic <a target="_blank" href="http://applications.mercadolibre.com/">aquí</a>)</p>
+                    </div>
+                  </form>
                 </div>
+
             </div>
         </div>
     </div>
@@ -48,7 +58,13 @@
     
 
 </section>
+  <script>
+    function showApp(){
+      $('#show_app').hide();
+      $('#app_section').show();
+    }
 
+  </script>
   <script src="../assets/web/assets/jquery/jquery.min.js"></script>
   <script src="../assets/tether/tether.min.js"></script>
   <script src="../assets/bootstrap/js/bootstrap.min.js"></script>

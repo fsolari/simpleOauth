@@ -6,14 +6,20 @@ session_start('meliexpress');
 
 require '../meli.php';
 require '../../functions.php';
+global $app_id, $secret_key;
 
-// echo $_SERVER['SERVER_NAME'];
-// die;
 
 $_SESSION['MELI_the_token'] = "";
 
-$meli = new Meli('2220486502877433', 'rG3n3Lk7830EdUfjwoUuUB0wc9Sq4hQR', 
-				$_SESSION['MELI_seller_access_token'], $_SESSION['MELI_seller_refresh_token']);
+if($_SESSION['app_id']!=""){$app_id=$_SESSION['app_id'];}
+if($_SESSION['secret_key']!=""){$secret_key=$_SESSION['secret_key'];}
+
+
+
+$meli = new Meli($app_id,$secret_key, 
+			$_SESSION['MELI_seller_access_token'], $_SESSION['MELI_seller_refresh_token']);
+
+
 
 if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 
@@ -52,7 +58,7 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 
 	$authParams = array('access_token'=>$_SESSION['MELI_seller_access_token']);
 	$res = $meli->get('/users/me', $authParams);
-	
+
 	$email 					= $res['body']->email;
 	$identification_number 	= $res['body']->identification->number;
 	$identification_type 	= $res['body']->identification->type;
@@ -65,15 +71,19 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 	$refresh_token 			= $_SESSION['MELI_seller_refresh_token'];
 	$json					= json_encode($res);
 
-	// Lee si existe el registro
-	$u_id = getFieldValue("SELECT user_id FROM simpleoauth.users WHERE user_id='$user_id'","user_id");
+	$app_info = $meli->get("/applications/$app_id", $authParams);
+	$app_name = $app_info['body']->name;
+	
 
-	if($u_id){ 
+	// Lee si existe el registro
+	$check_user_id = getFieldValue("SELECT user_id FROM simpleoauth.users WHERE user_id='$user_id' AND app_id='$app_id' AND secret_key='$secret_key'","user_id");
+	
+	if($check_user_id){ 
 		// Si existe lo actualiza
-		$query = "UPDATE simpleoauth.users SET user_id='$user_id',nickname='$nickname',email='$email',identification_number='$identification_number',identification_type='$identification_type',user_json='$json', access_token='$access_token', expires_in='$expires_in', refresh_token='$refresh_token',site_id='$site_id',points=$points WHERE user_id=$user_id";
+		$query = "UPDATE simpleoauth.users SET user_id='$user_id',nickname='$nickname',email='$email',identification_number='$identification_number',identification_type='$identification_type',user_json='$json', access_token='$access_token', expires_in='$expires_in', refresh_token='$refresh_token',site_id='$site_id',points=$points WHERE user_id='$user_id' AND app_id='$app_id' AND secret_key='secret_key';";
 		$q = updateQuery($query);
 
-		$the_token = getFieldValue("SELECT the_token FROM simpleoauth.users WHERE user_id='$user_id'","the_token");
+		$the_token = getFieldValue("SELECT the_token FROM simpleoauth.users WHERE user_id='$user_id' AND app_id='$app_id' AND secret_key='$secret_key';","the_token");
 		
 	}else{
 
@@ -82,18 +92,20 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 		// genera the_token:
 		$the_token = md5(uniqid(rand(), true))."-".md5(uniqid($email, true))."-".md5(uniqid(rand(), true));
 
-		$query = "INSERT INTO simpleoauth.users (the_token,user_id,nickname,email,identification_number,identification_type,user_json, access_token, expires_in, refresh_token,site_id,points) VALUES ('$the_token','$user_id','$nickname','$email','$identification_number','$identification_type','$json','$access_token','$expires_in','$refresh_token','$site_id',$points)";
+		$query = "INSERT INTO simpleoauth.users (the_token,user_id,nickname,email,identification_number,identification_type,user_json, access_token, expires_in, refresh_token,site_id,points, app_id,secret_key) VALUES ('$the_token','$user_id','$nickname','$email','$identification_number','$identification_type','$json','$access_token','$expires_in','$refresh_token','$site_id',$points,'$app_id','$secret_key')";
 		$q = insertQuery($query);
 		
 	}
 	$_SESSION['MELI_nickname']	= $nickname;
 	$_SESSION['MELI_the_token']	= $the_token;
-
+	$_SESSION['MELI_app_name']	= $app_name;
 	header('location:https://simpleoauth.com/meli/done/');
 	
 } else {
 
 	$_SESSION['MELI_the_token'] = "";
+
+
 
 	header('location:'.$meli->getAuthUrl('https://simpleoauth.com/api/meli/login/', Meli::$AUTH_URL['MLC']));
 }
