@@ -10,7 +10,7 @@ session_start('meliexpress');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
   <meta name="description" content="Un solo token para todas tus llamadas a la API de Mercado Libre">
-  <title>simpleoauth</title>
+  <title>simpleOAuth</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
@@ -54,7 +54,7 @@ session_start('meliexpress');
             <div class="row">
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
 
-                    <h1 class="mbr-section-title display-1">simpleoauth</h1>
+                    <h1 class="mbr-section-title display-1">simpleOAuth</h1>
                     <p class="mbr-section-lead lead">Un solo <strong>token</strong> para todas tus llamadas</br>a la API de Mercado Libre</p>
                     <p class="mbr-section-btn"><a class="btn btn-lg btn-primary" href="/meli/">ENTRAR</a> </p>
 
