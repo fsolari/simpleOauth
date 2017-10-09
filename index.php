@@ -58,7 +58,7 @@ session_start('meliexpress');
                     <p class="mbr-section-lead lead">Un solo <strong>token</strong> para todas tus llamadas</br>a la API de Mercado Libre</p>
                     <p class="mbr-section-btn"><a class="btn btn-lg btn-primary" href="/meli/">ENTRAR</a> </p>
 
-                    <p style="color:white;">Guardamos y renovamos de forma segura<br/>tu access_token para ti. <a target="_blank" href="https://youtu.be/QLBHXEcIijg">Descubre el tutorial.</a></p><br/>
+                    <p style="color:white;">Guardamos y renovamos de forma segura<br/>tu access_token para ti. <a class="video" target="_blank" href="https://youtu.be/QLBHXEcIijg">Descubre el tutorial.</a></p><br/>
                     
                     <p style="color:white;">Versión Beta 2.0</p>
 
