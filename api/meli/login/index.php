@@ -67,7 +67,7 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 
 
 	if($res['body']->status == 403){
-			echo "Ha ocurrido un problema al autenticarte con Mercado Libre. Vuelve a intentarlo en unos minutos";
+			echo "Error 403. Ha ocurrido un problema con la autenticación con Mercado Libre. Vuelve a intentarlo en unos minutos";
 			die;
 	};
 
