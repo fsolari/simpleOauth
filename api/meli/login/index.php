@@ -44,20 +44,32 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 				// Make the refresh proccess
 				$refresh = $meli->refreshAccessToken();
 
+
+					
+
 				// Now we create the sessions with the new parameters
 				$_SESSION['MELI_seller_access_token'] = $refresh['body']->access_token;
 				$_SESSION['MELI_seller_expires_in'] = time() + $refresh['body']->expires_in;
 				$_SESSION['MELI_seller_refresh_token'] = $refresh['body']->refresh_token;
 			} catch (Exception $e) {
 			  	echo "Exception: ",  $e->getMessage(), "\n";
+			  	die;
 			}
 		}
 	}
+
+
 
 	// Read users/me of this user
 
 	$authParams = array('access_token'=>$_SESSION['MELI_seller_access_token']);
 	$res = $meli->get('/users/me', $authParams);
+
+
+	if($res['body']->status == 403){
+			echo "Ha ocurrido un problema al autenticarte con Mercado Libre. Vuelve a intentarlo en unos minutos";
+			die;
+	};
 
 	$email 					= $res['body']->email;
 	$identification_number 	= $res['body']->identification->number;
@@ -73,7 +85,7 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 
 	$app_info = $meli->get("/applications/$app_id", $authParams);
 	$app_name = $app_info['body']->name;
-	
+
 
 	// Lee si existe el registro
 	$check_user_id = getFieldValue("SELECT user_id FROM simpleoauth.users WHERE user_id='$user_id' AND app_id='$app_id' AND secret_key='$secret_key'","user_id");
@@ -96,6 +108,9 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 		$q = insertQuery($query);
 		
 	}
+
+	
+	
 	$_SESSION['MELI_nickname']	= $nickname;
 	$_SESSION['MELI_the_token']	= $the_token;
 	$_SESSION['MELI_app_name']	= $app_name;
