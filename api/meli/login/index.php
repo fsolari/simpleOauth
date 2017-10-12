@@ -32,7 +32,9 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 		}else{
 			$user = $meli->authorize($_GET['code'], 'https://simpleoauth.com/api/meli/login/');
 		}
-		
+		// echo "{\"user\":0}";
+		// echo json_encode($user);
+
 		// Now we create the sessions with the authenticated user
 		$_SESSION['MELI_seller_access_token'] = $user['body']->access_token;
 		$_SESSION['MELI_seller_expires_in'] = time() + $user['body']->expires_in;
@@ -44,16 +46,16 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 				// Make the refresh proccess
 				$refresh = $meli->refreshAccessToken();
 
-
-					
-
+				// echo "{\"refresh\":0},";
+				// echo json_encode($refresh);
+				
 				// Now we create the sessions with the new parameters
 				$_SESSION['MELI_seller_access_token'] = $refresh['body']->access_token;
 				$_SESSION['MELI_seller_expires_in'] = time() + $refresh['body']->expires_in;
 				$_SESSION['MELI_seller_refresh_token'] = $refresh['body']->refresh_token;
 			} catch (Exception $e) {
 			  	echo "Exception: ",  $e->getMessage(), "\n";
-			  	die;
+			  	
 			}
 		}
 	}
@@ -64,10 +66,11 @@ if($_GET['code'] || $_SESSION['MELI_seller_access_token']) {
 
 	$authParams = array('access_token'=>$_SESSION['MELI_seller_access_token']);
 	$res = $meli->get('/users/me', $authParams);
-
+	// echo json_encode($res);
+	// die;
 
 	if($res['body']->status == 403){
-			echo "Error 403. Ha ocurrido un problema con la autenticación con Mercado Libre. Vuelve a intentarlo en unos minutos";
+			echo "Error 403. Ha ocurrido un problema con el servicio de OAuth de Mercado Libre. Vuelve a intentarlo en unos minutos";
 			die;
 	};
 
